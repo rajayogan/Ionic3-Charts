@@ -7,6 +7,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { VoteProvider } from '../providers/vote/vote';
+
+
+const config = {
+    apiKey: <apiKey>,
+    authDomain: <yourauthDomain>,
+    databaseURL: <yourdatabaseURL>,
+    projectId: <yourprojectId>,
+    storageBucket: <yourstoragebucket>,
+    messagingSenderId: <yoursenderIdhere>
+  };
+
 @NgModule({
   declarations: [
     MyApp,
@@ -14,6 +28,8 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(config),
+    AngularFirestoreModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -24,7 +40,8 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    VoteProvider
   ]
 })
 export class AppModule {}

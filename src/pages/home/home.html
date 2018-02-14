@@ -1,14 +1,29 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title text-center>
+      Reviews
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div text-center style="padding-bottom: 15px">
+    <h5>Product: Audio Technica ATH-M50x</h5>
+    <img width="180" height="180" src="https://firebasestorage.googleapis.com/v0/b/myapp-4eadd.appspot.com/o/Headphone-Zone-Audio-Technica-M50x-Black-1_2000x.jpg?alt=media&token=e348070e-28ca-4d6b-85f4-ab0f7ce46cbc">
+  </div>
+  <div text-center>
+    <p *ngIf="voted">Reviews so far</p>
+    <ion-fab center *ngIf="!voted">
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button ion-fab mini (click)="dope()" color="secondary"><ion-icon name="thumbs-up"></ion-icon></button>
+      </ion-fab-list>
+      <ion-fab-list side="right">
+        <button ion-fab mini (click)="nope()" color="danger"><ion-icon name="thumbs-down"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+  </div>
+  <div style="padding-top:10px;">
+    <canvas #chartCanvas></canvas>
+  </div>
 </ion-content>
